@@ -34,16 +34,20 @@ body{
 #welcome{
     width:100vw;
     height:100vh;
-    background:url("Ekran görüntüsü 2026-10-20 180628.png");
+    cursor:pointer;
+
+    background-image:
+    url("Ekran görüntüsü 2026-10-20 180628.png");
+
     background-size:cover;
     background-position:center;
-    cursor:pointer;
+    background-repeat:no-repeat;
 }
 
 /* Dersler */
 
 #subjects{
-    min-height:100vh;
+    display:none;
     flex-direction:column;
     align-items:center;
     padding:40px 20px;
@@ -53,7 +57,7 @@ body{
     display:flex;
     align-items:center;
     gap:15px;
-    margin-bottom:40px;
+    margin-bottom:35px;
 }
 
 .logo svg{
@@ -70,22 +74,24 @@ body{
 }
 
 .subject-grid{
-    width:100%;
+    width:90%;
     max-width:1000px;
 
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:15px;
+    gap:18px;
 }
 
 .subject-btn{
     background:#1e293b;
-    color:white;
     border:2px solid #334155;
-    border-radius:12px;
+    color:white;
+
     padding:18px;
+    border-radius:12px;
     font-size:18px;
     cursor:pointer;
+
     transition:.2s;
 }
 
@@ -93,12 +99,13 @@ body{
     background:#334155;
 }
 
-/* İngilizce */
+/* İngilizce Sayfası */
 
 #english{
+    display:none;
+    position:relative;
     width:100vw;
     height:100vh;
-    position:relative;
 }
 
 #english img{
@@ -113,16 +120,16 @@ body{
     top:20px;
     left:20px;
 
+    z-index:10;
+
     border:none;
-    border-radius:8px;
-
-    padding:12px 20px;
-
     background:#dc2626;
     color:white;
 
+    padding:12px 22px;
+    border-radius:8px;
+
     cursor:pointer;
-    z-index:100;
 }
 
 .back:hover{
@@ -132,11 +139,11 @@ body{
 </head>
 <body>
 
-<!-- AÇILIŞ -->
+<!-- Açılış -->
 
 <div id="welcome" class="page active"></div>
 
-<!-- DERSLER -->
+<!-- Dersler -->
 
 <div id="subjects" class="page">
 
@@ -156,59 +163,87 @@ body{
     </div>
 
     <div class="subject-grid">
+
         <button class="subject-btn">Türkçe</button>
-        <button class="subject-btn" onclick="openEnglish()">İngilizce</button>
+
+        <button class="subject-btn" onclick="openEnglish()">
+            İngilizce
+        </button>
+
         <button class="subject-btn">Matematik</button>
+
         <button class="subject-btn">Fen Bilimleri</button>
+
         <button class="subject-btn">Sosyal Bilgiler</button>
+
         <button class="subject-btn">Din Kültürü</button>
+
         <button class="subject-btn">Bilişim Teknolojileri</button>
+
         <button class="subject-btn">Görsel Sanatlar</button>
+
         <button class="subject-btn">Müzik</button>
+
         <button class="subject-btn">Beden Eğitimi</button>
+
     </div>
 
 </div>
 
-<!-- İNGİLİZCE -->
+<!-- İngilizce -->
 
-<div id="english" class="page">
+<div id="english">
 
     <button class="back" onclick="backToSubjects()">
         ← Geri
     </button>
 
-    <img src="english.png" alt="İngilizce">
+    <img
+    src="Ekran görüntüsü 2026-10-20 180628.png"
+    alt="İngilizce Ödevi">
 
 </div>
 
 <script>
 
-const welcome = document.getElementById("welcome");
-const subjects = document.getElementById("subjects");
-const english = document.getElementById("english");
+const welcome =
+document.getElementById("welcome");
 
-welcome.onclick = function(){
-    welcome.classList.remove("active");
-    subjects.classList.add("active");
-};
+const subjects =
+document.getElementById("subjects");
+
+const english =
+document.getElementById("english");
+
+welcome.addEventListener("click",()=>{
+
+    welcome.style.display="none";
+    subjects.style.display="flex";
+
+});
 
 function openEnglish(){
-    subjects.classList.remove("active");
-    english.classList.add("active");
+
+    subjects.style.display="none";
+    english.style.display="block";
+
 }
 
 function backToSubjects(){
-    english.classList.remove("active");
-    subjects.classList.add("active");
+
+    english.style.display="none";
+    subjects.style.display="flex";
+
 }
 
-document.querySelectorAll(".subject-btn").forEach(button => {
+document.querySelectorAll(".subject-btn").forEach(btn=>{
 
-    if(button.textContent !== "İngilizce"){
+    if(btn.innerText !== "İngilizce"){
 
-        button.addEventListener("click", function(){
+        btn.addEventListener("click",()=>{
+
             alert("Bu ders henüz eklenmedi.");
+
         });
 
     }
