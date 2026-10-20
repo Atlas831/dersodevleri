@@ -6,16 +6,17 @@
 <title>Ödev Merkezi</title>
 
 <style>
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial,sans-serif;
+    font-family:Arial, sans-serif;
 }
 
 body{
-    background:#0f172a;
-    color:white;
+    background:#f5f7fb;
+    color:#222;
 }
 
 /* Sayfalar */
@@ -27,30 +28,42 @@ body{
 
 .active{
     display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
 }
 
 /* Açılış */
 
 #welcome{
-    width:100vw;
-    height:100vh;
-    cursor:pointer;
-
-    background-image:
+    background:
+    linear-gradient(rgba(255,255,255,.15),
+    rgba(255,255,255,.15)),
     url("Ekran görüntüsü 2026-10-20 180628.png");
 
     background-size:cover;
     background-position:center;
-    background-repeat:no-repeat;
+    cursor:pointer;
+    text-align:center;
+}
+
+#welcome h1{
+    color:white;
+    font-size:70px;
+    text-shadow:0 3px 10px rgba(0,0,0,.5);
+}
+
+#welcome p{
+    color:white;
+    margin-top:15px;
+    font-size:24px;
 }
 
 /* Dersler */
 
 #subjects{
-    display:none;
-    flex-direction:column;
-    align-items:center;
     padding:40px 20px;
+    background:#f5f7fb;
 }
 
 .logo{
@@ -67,10 +80,11 @@ body{
 
 .logo h1{
     font-size:32px;
+    color:#1e3a8a;
 }
 
 .logo p{
-    color:#94a3b8;
+    color:#64748b;
 }
 
 .subject-grid{
@@ -79,40 +93,43 @@ body{
 
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:18px;
+    gap:16px;
 }
 
 .subject-btn{
-    background:#1e293b;
-    border:2px solid #334155;
-    color:white;
+    background:white;
+    color:#222;
+
+    border:1px solid #dbe3ee;
+    border-radius:12px;
 
     padding:18px;
-    border-radius:12px;
     font-size:18px;
+
     cursor:pointer;
 
     transition:.2s;
 }
 
 .subject-btn:hover{
-    background:#334155;
+    background:#eef4ff;
+    transform:translateY(-2px);
 }
 
-/* İngilizce Sayfası */
+/* İngilizce */
 
 #english{
-    display:none;
     position:relative;
     width:100vw;
     height:100vh;
+    overflow:hidden;
 }
 
 #english img{
     width:100%;
     height:100%;
     object-fit:contain;
-    background:black;
+    background:white;
 }
 
 .back{
@@ -120,30 +137,46 @@ body{
     top:20px;
     left:20px;
 
-    z-index:10;
-
     border:none;
-    background:#dc2626;
+    border-radius:10px;
+
+    background:#2563eb;
     color:white;
 
     padding:12px 22px;
-    border-radius:8px;
-
     cursor:pointer;
+
+    z-index:999;
 }
 
 .back:hover{
-    background:#b91c1c;
+    background:#1d4ed8;
 }
+
+@media(max-width:700px){
+
+    #welcome h1{
+        font-size:42px;
+    }
+
+    .logo h1{
+        font-size:25px;
+    }
+
+}
+
 </style>
 </head>
 <body>
 
-<!-- Açılış -->
+<!-- GİRİŞ -->
 
-<div id="welcome" class="page active"></div>
+<div id="welcome" class="page active">
+    <h1>LET'S GET STARTED</h1>
+    <p>Başlamak için tıklayın</p>
+</div>
 
-<!-- Dersler -->
+<!-- DERSLER -->
 
 <div id="subjects" class="page">
 
@@ -151,8 +184,12 @@ body{
 
         <svg viewBox="0 0 100 100">
             <circle cx="50" cy="50" r="45" fill="#2563eb"/>
-            <path d="M20 40L50 25L80 40L50 55L20 40Z" fill="white"/>
-            <rect x="45" y="55" width="10" height="18" fill="white"/>
+            <path d="M20 40L50 25L80 40L50 55L20 40Z"
+            fill="white"/>
+            <rect x="45" y="55"
+            width="10"
+            height="16"
+            fill="white"/>
         </svg>
 
         <div>
@@ -166,7 +203,8 @@ body{
 
         <button class="subject-btn">Türkçe</button>
 
-        <button class="subject-btn" onclick="openEnglish()">
+        <button class="subject-btn"
+        onclick="openEnglish()">
             İngilizce
         </button>
 
@@ -190,60 +228,47 @@ body{
 
 </div>
 
-<!-- İngilizce -->
+<!-- İNGİLİZCE -->
 
-<div id="english">
+<div id="english" class="page">
 
-    <button class="back" onclick="backToSubjects()">
-        ← Geri
+    <button class="back"
+    onclick="backToSubjects()">
+        Geri
     </button>
 
-    <img
-    src="Ekran görüntüsü 2026-10-20 180628.png"
+    <img src="Ekran görüntüsü 2026-10-20 180628.png"
     alt="İngilizce Ödevi">
 
 </div>
 
 <script>
 
-const welcome =
-document.getElementById("welcome");
+const welcome = document.getElementById("welcome");
+const subjects = document.getElementById("subjects");
+const english = document.getElementById("english");
 
-const subjects =
-document.getElementById("subjects");
-
-const english =
-document.getElementById("english");
-
-welcome.addEventListener("click",()=>{
-
-    welcome.style.display="none";
-    subjects.style.display="flex";
-
-});
+welcome.onclick = function(){
+    welcome.classList.remove("active");
+    subjects.classList.add("active");
+}
 
 function openEnglish(){
-
-    subjects.style.display="none";
-    english.style.display="block";
-
+    subjects.classList.remove("active");
+    english.classList.add("active");
 }
 
 function backToSubjects(){
-
-    english.style.display="none";
-    subjects.style.display="flex";
-
+    english.classList.remove("active");
+    subjects.classList.add("active");
 }
 
 document.querySelectorAll(".subject-btn").forEach(btn=>{
 
     if(btn.innerText !== "İngilizce"){
 
-        btn.addEventListener("click",()=>{
-
+        btn.addEventListener("click",function(){
             alert("Bu ders henüz eklenmedi.");
-
         });
 
     }
