@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Ödev Merkezi</title>
+<link rel="icon" href="logo.png">
 
 <style>
 
@@ -15,265 +17,239 @@
 }
 
 body{
-    background:#f5f7fb;
-    color:#222;
+    background:#eef5ff;
 }
 
-/* Sayfalar */
+/* Üst Menü */
 
-.page{
-    display:none;
-    min-height:100vh;
-}
+.topbar{
+    background:#0c4a8a;
+    color:white;
+    height:70px;
 
-.active{
     display:flex;
-    justify-content:center;
     align-items:center;
-    flex-direction:column;
+    justify-content:space-between;
+
+    padding:0 30px;
 }
 
-/* Açılış */
-
-#welcome{
-    background:
-    linear-gradient(rgba(255,255,255,.15),
-    rgba(255,255,255,.15)),
-    url("Ekran görüntüsü 2026-10-20 180628.png");
-
-    background-size:cover;
-    background-position:center;
-    cursor:pointer;
-    text-align:center;
-}
-
-#welcome h1{
-    color:white;
-    font-size:70px;
-    text-shadow:0 3px 10px rgba(0,0,0,.5);
-}
-
-#welcome p{
-    color:white;
-    margin-top:15px;
-    font-size:24px;
-}
-
-/* Dersler */
-
-#subjects{
-    padding:40px 20px;
-    background:#f5f7fb;
-}
-
-.logo{
+.logo-area{
     display:flex;
     align-items:center;
     gap:15px;
-    margin-bottom:35px;
 }
 
-.logo svg{
-    width:60px;
-    height:60px;
+.logo-area img{
+    width:45px;
+    height:45px;
+    border-radius:10px;
 }
 
-.logo h1{
-    font-size:32px;
+.logo-area h1{
+    font-size:28px;
+}
+
+.user{
+    font-size:18px;
+}
+
+/* Hoşgeldin */
+
+.welcome{
+    padding:30px;
+}
+
+.welcome h2{
     color:#1e3a8a;
+    font-size:42px;
 }
 
-.logo p{
-    color:#64748b;
-}
+/* Kartlar */
 
-.subject-grid{
-    width:90%;
-    max-width:1000px;
+.cards{
+    padding:0 30px 30px;
 
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:16px;
+    grid-template-columns:
+    repeat(auto-fit,minmax(280px,1fr));
+
+    gap:20px;
 }
 
-.subject-btn{
+.card{
     background:white;
-    color:#222;
 
-    border:1px solid #dbe3ee;
-    border-radius:12px;
+    border-radius:25px;
 
-    padding:18px;
-    font-size:18px;
+    padding:30px;
+
+    min-height:220px;
 
     cursor:pointer;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
 
     transition:.2s;
 }
 
-.subject-btn:hover{
-    background:#eef4ff;
-    transform:translateY(-2px);
+.card:hover{
+    transform:translateY(-5px);
 }
 
-/* İngilizce */
-
-#english{
-    position:relative;
-    width:100vw;
-    height:100vh;
-    overflow:hidden;
+.card h3{
+    color:#1e40af;
+    margin-bottom:15px;
+    font-size:28px;
 }
 
-#english img{
+.card p{
+    color:#64748b;
+}
+
+.big-card{
+    background:linear-gradient(
+    135deg,
+    #3b82f6,
+    #1e3a8a
+    );
+
+    color:white;
+}
+
+.big-card h3{
+    color:white;
+}
+
+.big-card p{
+    color:#e2e8f0;
+}
+
+/* Ders Görseli */
+
+#englishPage{
+    display:none;
+
+    position:fixed;
+    inset:0;
+
+    background:black;
+}
+
+#englishPage img{
     width:100%;
     height:100%;
     object-fit:contain;
-    background:white;
 }
 
 .back{
     position:absolute;
+
     top:20px;
     left:20px;
 
     border:none;
-    border-radius:10px;
 
-    background:#2563eb;
+    background:#dc2626;
     color:white;
 
-    padding:12px 22px;
+    padding:12px 20px;
+
+    border-radius:10px;
+
     cursor:pointer;
 
-    z-index:999;
+    z-index:100;
 }
 
 .back:hover{
-    background:#1d4ed8;
-}
-
-@media(max-width:700px){
-
-    #welcome h1{
-        font-size:42px;
-    }
-
-    .logo h1{
-        font-size:25px;
-    }
-
+    background:#b91c1c;
 }
 
 </style>
 </head>
 <body>
 
-<!-- GİRİŞ -->
+<div id="mainPage">
 
-<div id="welcome" class="page active">
-    <h1>LET'S GET STARTED</h1>
-    <p>Başlamak için tıklayın</p>
-</div>
+    <div class="topbar">
 
-<!-- DERSLER -->
-
-<div id="subjects" class="page">
-
-    <div class="logo">
-
-        <svg viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="45" fill="#2563eb"/>
-            <path d="M20 40L50 25L80 40L50 55L20 40Z"
-            fill="white"/>
-            <rect x="45" y="55"
-            width="10"
-            height="16"
-            fill="white"/>
-        </svg>
-
-        <div>
+        <div class="logo-area">
+            <img src="logo.png" alt="">
             <h1>Ödev Merkezi</h1>
-            <p>Tüm dersler tek yerde</p>
+        </div>
+
+        <div class="user">
+            Hoş Geldin Atlas Asil
         </div>
 
     </div>
 
-    <div class="subject-grid">
+    <div class="welcome">
+        <h2>Ödev Merkezine Hoş Geldin</h2>
+    </div>
 
-        <button class="subject-btn">Türkçe</button>
+    <div class="cards">
 
-        <button class="subject-btn"
-        onclick="openEnglish()">
-            İngilizce
-        </button>
+        <div class="card big-card" onclick="openEnglish()">
+            <h3>İngilizce</h3>
+            <p>İngilizce ödevlerini görüntülemek için tıklayın.</p>
+        </div>
 
-        <button class="subject-btn">Matematik</button>
+        <div class="card">
+            <h3>Türkçe</h3>
+            <p>Yakında eklenecek.</p>
+        </div>
 
-        <button class="subject-btn">Fen Bilimleri</button>
+        <div class="card">
+            <h3>Matematik</h3>
+            <p>Yakında eklenecek.</p>
+        </div>
 
-        <button class="subject-btn">Sosyal Bilgiler</button>
+        <div class="card">
+            <h3>Fen Bilimleri</h3>
+            <p>Yakında eklenecek.</p>
+        </div>
 
-        <button class="subject-btn">Din Kültürü</button>
+        <div class="card">
+            <h3>Sosyal Bilgiler</h3>
+            <p>Yakında eklenecek.</p>
+        </div>
 
-        <button class="subject-btn">Bilişim Teknolojileri</button>
-
-        <button class="subject-btn">Görsel Sanatlar</button>
-
-        <button class="subject-btn">Müzik</button>
-
-        <button class="subject-btn">Beden Eğitimi</button>
+        <div class="card">
+            <h3>Bilişim Teknolojileri</h3>
+            <p>Yakında eklenecek.</p>
+        </div>
 
     </div>
 
 </div>
 
-<!-- İNGİLİZCE -->
+<div id="englishPage">
 
-<div id="english" class="page">
-
-    <button class="back"
-    onclick="backToSubjects()">
-        Geri
+    <button class="back" onclick="closeEnglish()">
+        ← Geri
     </button>
 
-    <img src="Ekran görüntüsü 2026-10-20 180628.png"
-    alt="İngilizce Ödevi">
+    <img src="Ekran görüntüsü 2026-10-20 180628.png">
 
 </div>
 
 <script>
 
-const welcome = document.getElementById("welcome");
-const subjects = document.getElementById("subjects");
-const english = document.getElementById("english");
-
-welcome.onclick = function(){
-    welcome.classList.remove("active");
-    subjects.classList.add("active");
-}
-
 function openEnglish(){
-    subjects.classList.remove("active");
-    english.classList.add("active");
+
+    document.getElementById("mainPage").style.display="none";
+    document.getElementById("englishPage").style.display="block";
+
 }
 
-function backToSubjects(){
-    english.classList.remove("active");
-    subjects.classList.add("active");
+function closeEnglish(){
+
+    document.getElementById("englishPage").style.display="none";
+    document.getElementById("mainPage").style.display="block";
+
 }
-
-document.querySelectorAll(".subject-btn").forEach(btn=>{
-
-    if(btn.innerText !== "İngilizce"){
-
-        btn.addEventListener("click",function(){
-            alert("Bu ders henüz eklenmedi.");
-        });
-
-    }
-
-});
 
 </script>
 
