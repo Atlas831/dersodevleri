@@ -13,37 +13,37 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, sans-serif;
+    font-family:Arial,sans-serif;
 }
 
 body{
-    background:#eef5ff;
+    background:#eef4ff;
 }
 
-/* Üst Menü */
+/* ÜST MENÜ */
 
-.topbar{
-    background:#0c4a8a;
+.header{
+    background:#0b4e96;
     color:white;
-    height:70px;
+    height:75px;
 
     display:flex;
     align-items:center;
     justify-content:space-between;
 
-    padding:0 30px;
+    padding:0 25px;
 }
 
 .logo-area{
     display:flex;
     align-items:center;
-    gap:15px;
+    gap:12px;
 }
 
 .logo-area img{
-    width:45px;
-    height:45px;
-    border-radius:10px;
+    width:50px;
+    height:50px;
+    border-radius:12px;
 }
 
 .logo-area h1{
@@ -54,7 +54,7 @@ body{
     font-size:18px;
 }
 
-/* Hoşgeldin */
+/* HOŞ GELDİN */
 
 .welcome{
     padding:30px;
@@ -65,14 +65,13 @@ body{
     font-size:42px;
 }
 
-/* Kartlar */
+/* KARTLAR */
 
 .cards{
     padding:0 30px 30px;
 
     display:grid;
-    grid-template-columns:
-    repeat(auto-fit,minmax(280px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
 
     gap:20px;
 }
@@ -90,7 +89,7 @@ body{
 
     box-shadow:0 5px 15px rgba(0,0,0,.08);
 
-    transition:.2s;
+    transition:.25s;
 }
 
 .card:hover{
@@ -98,34 +97,34 @@ body{
 }
 
 .card h3{
-    color:#1e40af;
-    margin-bottom:15px;
     font-size:28px;
+    color:#2563eb;
+    margin-bottom:15px;
 }
 
 .card p{
     color:#64748b;
 }
 
-.big-card{
+.main-card{
     background:linear-gradient(
     135deg,
     #3b82f6,
-    #1e3a8a
+    #1e40af
     );
 
     color:white;
 }
 
-.big-card h3{
+.main-card h3{
     color:white;
 }
 
-.big-card p{
+.main-card p{
     color:#e2e8f0;
 }
 
-/* Ders Görseli */
+/* FOTOĞRAF SAYFASI */
 
 #englishPage{
     display:none;
@@ -149,13 +148,14 @@ body{
     left:20px;
 
     border:none;
+    border-radius:10px;
 
     background:#dc2626;
     color:white;
 
     padding:12px 20px;
 
-    border-radius:10px;
+    font-size:16px;
 
     cursor:pointer;
 
@@ -170,9 +170,9 @@ body{
 </head>
 <body>
 
-<div id="mainPage">
+<div id="homePage">
 
-    <div class="topbar">
+    <div class="header">
 
         <div class="logo-area">
             <img src="logo.png" alt="">
@@ -180,45 +180,45 @@ body{
         </div>
 
         <div class="user">
-            Hoş Geldin Atlas Asil
+            Atlas Asil
         </div>
 
     </div>
 
     <div class="welcome">
-        <h2>Ödev Merkezine Hoş Geldin</h2>
+        <h2>Hoş Geldin Atlas Asil</h2>
     </div>
 
     <div class="cards">
 
-        <div class="card big-card" onclick="openEnglish()">
+        <div class="card main-card" onclick="openEnglish()">
             <h3>İngilizce</h3>
             <p>İngilizce ödevlerini görüntülemek için tıklayın.</p>
         </div>
 
         <div class="card">
             <h3>Türkçe</h3>
-            <p>Yakında eklenecek.</p>
+            <p>Henüz içerik eklenmedi.</p>
         </div>
 
         <div class="card">
             <h3>Matematik</h3>
-            <p>Yakında eklenecek.</p>
+            <p>Henüz içerik eklenmedi.</p>
         </div>
 
         <div class="card">
             <h3>Fen Bilimleri</h3>
-            <p>Yakında eklenecek.</p>
+            <p>Henüz içerik eklenmedi.</p>
         </div>
 
         <div class="card">
             <h3>Sosyal Bilgiler</h3>
-            <p>Yakında eklenecek.</p>
+            <p>Henüz içerik eklenmedi.</p>
         </div>
 
         <div class="card">
             <h3>Bilişim Teknolojileri</h3>
-            <p>Yakında eklenecek.</p>
+            <p>Henüz içerik eklenmedi.</p>
         </div>
 
     </div>
@@ -231,24 +231,20 @@ body{
         ← Geri
     </button>
 
-    <img src="Ekran görüntüsü 2026-10-20 180628.png">
+    <img src="Ekran görüntüsü 2026-10-20 180628.png" alt="İngilizce">
 
 </div>
 
 <script>
 
 function openEnglish(){
-
-    document.getElementById("mainPage").style.display="none";
+    document.getElementById("homePage").style.display="none";
     document.getElementById("englishPage").style.display="block";
-
 }
 
 function closeEnglish(){
-
     document.getElementById("englishPage").style.display="none";
-    document.getElementById("mainPage").style.display="block";
-
+    document.getElementById("homePage").style.display="block";
 }
 
 </script>
